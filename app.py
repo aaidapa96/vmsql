@@ -11,7 +11,7 @@ password = 'demo!pass123'
 driver = '{ODBC Driver 17 for SQL Server}'
 
 def get_db_connection():
-    conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+password)
+    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+password)
     return conn
 
 @app.route('/')

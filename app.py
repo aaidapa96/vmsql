@@ -4,7 +4,7 @@ import pyodbc
 app = Flask(__name__)
 
 # Database connection settings
-server = 'terraform-sql-a2b99a98'
+server = 'terraform-sql-a2b99a98.database.windows.net'
 database = 'userdb'
 username = 'sqladmin'
 password = 'demo!pass123'

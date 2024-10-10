@@ -4,10 +4,10 @@ import pyodbc
 app = Flask(__name__)
 
 # Database connection settings
-server = '<SQL_SERVER_NAME>'
+server = 'terraform-sql-a2b99a98'
 database = 'userdb'
-username = '<SQL_ADMIN_USERNAME>'
-password = '<SQL_ADMIN_PASSWORD>'
+username = 'sqladmin'
+password = 'demo!pass123'
 driver = '{ODBC Driver 17 for SQL Server}'
 
 def get_db_connection():

@@ -4,7 +4,7 @@ import pyodbc
 app = Flask(__name__)
 
 # Database connection settings
-server = 'aaidapasql897.database.windows.net'  # You may want to replace this with the server's IP address
+server = 'aaidapasql89712.database.windows.net'  # You may want to replace this with the server's IP address
 database = 'userdb'
 username = 'sqladmin'
 password = 'demo!pass123'

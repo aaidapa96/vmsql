@@ -42,12 +42,11 @@ jobs:
       - name: 'Terraform Apply'
         run: terraform apply -auto-approve
 
-      - name: Commit and Push State
+      - name: Commit Changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add terraform.tfstate backend.tf
+          git add backend.tf terraform.tfstate
           git commit -m "Update Terraform state"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/aaidapa96/vmsql.git HEAD:main
+      

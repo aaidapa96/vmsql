@@ -1,30 +1,29 @@
-name: Run Commands on Azure VM
+name: Run Ubuntu Commands on Azure VM
 
 on:
   push:
     branches:
-      - main  # Run the workflow when code is pushed to the main
+      - main
 
 jobs:
-  run-on-vm:
+  run_commands_on_vm:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      # Install SSH client
+      - name: Install SSH client
+        run: sudo apt-get update && sudo apt-get install -y sshpass
 
-      - name: Install SSH Client
-        run: sudo apt-get update && sudo apt-get install -y openssh-client
-
-      - name: Run Commands on VM via SSH with Password
+      # Run commands on Azure VM
+      - name: Execute Commands on Azure VM
+        env:
+          VM_SSH_HOST: ${{ secrets.VM_SSH_HOST }}
+          VM_SSH_USER: ${{ secrets.VM_SSH_USER }}
+          VM_SSH_PASSWORD: ${{ secrets.VM_SSH_PASSWORD }}  # Optional if using password-based authentication
         run: |
-          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} << 'EOF'
-          # Ubuntu commands you want to run go here
-          echo "Running commands on Azure VM"
-          sudo apt-get update
-          sudo apt-get install -y nginx
+          sshpass -p "${{ secrets.VM_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_SSH_USER }}@${{ secrets.VM_SSH_HOST }} << 'EOF'
+          # Your Ubuntu commands go here
+          sudo apt update
+          sudo apt install -y nginx
+          sudo systemctl start nginx
           EOF
-      - env:
-          VM_USERNAME: ${{ secrets.VM_USERNAME }}
-          VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
-          VM_HOST: ${{ secrets.VM_HOST }}

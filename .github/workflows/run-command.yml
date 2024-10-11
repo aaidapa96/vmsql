@@ -38,5 +38,5 @@ jobs:
           cd vmsql
           pip3 install -r requirements.txt
           y
-          nohup python3 app.py &
+          python3 app.py
           EOF

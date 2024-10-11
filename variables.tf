@@ -1,5 +1,5 @@
 variable "resource_group_name" {
-  default = "vm_sql_rg1"
+  default = "vm_sql_rg12"
 }
 
 variable "location" {
@@ -24,7 +24,7 @@ variable "sql_admin_password" {
 }
 
 variable "sql_server" {
-  default="aaidapasql897"
+  default="aaidapasql89712"
 }
 
 variable "vm_size" {

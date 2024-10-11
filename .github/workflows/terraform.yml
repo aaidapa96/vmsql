@@ -20,6 +20,13 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.5.0  # Adjust the Terraform version as needed
+      - name: Configure Terraform Backend
+        run: |
+          echo "terraform {
+            backend \"local\" {
+              path = \"terraform.tfstate\"
+            }
+          }" > backend.tf
 
       - name: 'Azure login'
         uses: azure/login@v1
@@ -34,3 +41,13 @@ jobs:
 
       - name: 'Terraform Apply'
         run: terraform apply -auto-approve
+
+      - name: Commit and Push State
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add terraform.tfstate backend.tf
+          git commit -m "Update Terraform state"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions

@@ -17,11 +17,11 @@ jobs:
       # Run commands on Azure VM
       - name: Execute Commands on Azure VM
         env:
-          VM_SSH_HOST: ${{ secrets.VM_SSH_HOST }}
-          VM_SSH_USER: ${{ secrets.VM_SSH_USER }}
-          VM_SSH_PASSWORD: ${{ secrets.VM_SSH_PASSWORD }}  # Optional if using password-based authentication
+          VM_SSH_HOST: ${{ secrets.VM_HOST }}
+          VM_SSH_USER: ${{ secrets.VM_USERNAME }}
+          VM_SSH_PASSWORD: ${{ secrets.VM_PASSWORD }}  # Optional if using password-based authentication
         run: |
-          sshpass -p "${{ secrets.VM_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_SSH_USER }}@${{ secrets.VM_SSH_HOST }} << 'EOF'
+          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} << 'EOF'
           # Your Ubuntu commands go here
           sudo apt update
           sudo apt install -y nginx

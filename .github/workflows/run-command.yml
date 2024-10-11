@@ -3,7 +3,7 @@ name: Run Commands on Azure VM
 on:
   push:
     branches:
-      - main  # Run the workflow when code is pushed to the main branch
+      - main  # Run the workflow when code is pushed to the main
 
 jobs:
   run-on-vm:

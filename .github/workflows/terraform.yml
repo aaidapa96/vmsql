@@ -36,6 +36,16 @@ jobs:
       - name: 'Terraform Init'
         run: terraform init
 
+      - name: Check if Resource Group Exists
+        id: rg_check
+        run: |
+          az group show --name vm_sql_rg123 || echo "Not found"
+      
+      - name: Import Resource Group if Exists
+        if: steps.rg_check.outputs.rg_exists == 'true'
+        run: |
+          terraform import azurerm_resource_group.rg /subscriptions/189548b6-6700-43c9
+
       - name: 'Terraform Plan'
         run: terraform plan
 

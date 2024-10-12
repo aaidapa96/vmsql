@@ -19,7 +19,7 @@ jobs:
         env:
           VM_SSH_HOST: ${{ secrets.VM_HOST }}
           VM_SSH_USER: ${{ secrets.VM_USERNAME }}
-          VM_SSH_PASSWORD: ${{ secrets.VM_PASSWORD }}  # Optional if using password-based authentication
+          VM_SSH_PASSWORD: ${{ secrets.VM_PASSWORD }}  # Optional if using password-based authenticatio
         run: |
           sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} << 'EOF'
           # Your Ubuntu commands go here

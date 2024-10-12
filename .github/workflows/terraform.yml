@@ -39,7 +39,7 @@ jobs:
       - name: Import Existing Resource (Optional)
         run: |
           # Replace <resource_type> and <resource_id> with your actual values
-          terraform import <resource_type>.<resource_name> <resource_id> || true
+          terraform import
 
       - name: 'Terraform Plan'
         run: terraform plan

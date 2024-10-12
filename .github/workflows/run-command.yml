@@ -33,7 +33,7 @@ jobs:
           echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
           source ~/.bashrc
           apt install -y python3-pip
-          sql_srv=${{ secrets.SQL_SRV_NAME }}
+          sql_srv=${{ secrets.SQL_FQDN }}
           sqlcmd -S $sql_srv -U sqladmin -d userdb -Q "CREATE TABLE Users (Name NVARCHAR(100), Email NVARCHAR(100));" -P 'demo!pass123'
           git clone https://github.com/aaidapa96/vmsql.git
           cd vmsql

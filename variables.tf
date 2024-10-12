@@ -1,5 +1,5 @@
 variable "resource_group_name" {
-  default = "vm_sql_rg567"
+  default = "vm_sql_rg234"
 }
 
 variable "location" {

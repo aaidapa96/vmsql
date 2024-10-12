@@ -33,7 +33,8 @@ jobs:
           echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
           source ~/.bashrc
           apt install -y python3-pip
-          sqlcmd -S aaidapasql89712.database.windows.net -U sqladmin -d userdb -Q "CREATE TABLE Users (Name NVARCHAR(100), Email NVARCHAR(100));" -P 'demo!pass123'
+          sql_srv=${{ secrets.SQL_FQDN }}
+          sqlcmd -S $sql_srv -U sqladmin -d userdb -Q "CREATE TABLE Users (Name NVARCHAR(100), Email NVARCHAR(100));" -P 'demo!pass123'
           git clone https://github.com/aaidapa96/vmsql.git
           cd vmsql
           pip3 install -r requirements.txt

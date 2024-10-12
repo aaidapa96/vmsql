@@ -1,5 +1,5 @@
 variable "resource_group_name" {
-  default = "myvmsqlrg"
+  default = "myvmsqlrg1"
 }
 
 variable "location" {

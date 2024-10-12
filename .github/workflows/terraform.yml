@@ -39,7 +39,7 @@ jobs:
       - name: Import Existing Resource (Optional)
         run: |
           # Replace <resource_type> and <resource_id> with your actual values
-          terraform import azurerm_resource_group.rg "/subscriptions/189548b6-6700-43c9-a255-ea1c906f05a2/resourceGroups/myvmsqlrg" || true
+          terraform import azurerm_resource_group.rg "/subscriptions/189548b6-6700-43c9-a255-ea1c906f05a2/resourceGroups/myvmsqlrg1" || true
 
       - name: 'Terraform Plan'
         run: terraform plan

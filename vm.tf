@@ -35,6 +35,7 @@ resource "azurerm_public_ip" "public_ip" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
+  domain_name_label   = "aaidavm678"
 }
 
 resource "azurerm_linux_virtual_machine" "vm" {

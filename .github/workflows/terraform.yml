@@ -43,6 +43,7 @@ jobs:
         run: terraform apply -auto-approve -var "sql_server=${{ secrets.SQL_SRV_NAME }}"
 
       - name: Commit Changes
+        if: always()
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"

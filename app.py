@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Database connection settings
-server = os.getenv('SQL_SERVER_FQDN')  # You may want to replace this with the server's IP address.
+server = os.getenv('SQL_SERVER_FQDN')  # You may want to replace this with the server's IP address
 database = 'userdb'
 username = 'sqladmin'
 password = 'demo!pass123'

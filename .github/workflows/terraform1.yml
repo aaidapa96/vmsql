@@ -28,7 +28,7 @@ jobs:
 
       # Step 4: Initialize Terraform, specifying the backend storage in Azure
       - name: Terraform Init
-        run: terraform init -input=false -force-copy
+        run: terraform init -input=false -force-copy -lock=false
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}

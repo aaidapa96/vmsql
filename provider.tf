@@ -6,7 +6,7 @@ provider "azurerm" {
 
 
 resource "random_id" "random" {
-  byte_length = 4
+  byte_length = 4 //k
 }
 
 

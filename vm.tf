@@ -1,3 +1,10 @@
+backend "azurerm" {
+    resource_group_name  = "rg-terraform-github-actions-state"
+    storage_account_name = "terraformstateaaida23"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+    use_oidc             = true 
+}
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location

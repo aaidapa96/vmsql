@@ -11,8 +11,8 @@ resource "random_id" "random" {
 data "terraform_remote_state" "foo" {
   backend = "azurerm"
   config = {
-    resource_group_name  = "StorageAccount-ResourceGroup"
-    storage_account_name = "terraform123abc"
+    resource_group_name  = "rg-terraform-github-actions-state"
+    storage_account_name = "terraformstateaaida23"
     container_name       = "tfstate"
     key                  = "prod.terraform.tfstate"
     client_id            = "b8b1b7a3-3864-4135-863d-c92658e9418a"  # Can also be set via `ARM_CLIENT_ID` environment variable.

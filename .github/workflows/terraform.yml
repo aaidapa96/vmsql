@@ -36,23 +36,10 @@ jobs:
       - name: 'Terraform Init'
         run: terraform init
         
-      - name: Import Existing Resource (Optional)
-        run: |
-          # Replace <resource_type> and <resource_id> with your actual values
-          terraform import azurerm_resource_group.rg "/subscriptions/189548b6-6700-43c9-a255-ea1c906f05a2/resourceGroups/vm_sql_rg567" || true
-
       - name: 'Terraform Plan'
         run: terraform plan
 
       - name: 'Terraform Apply'
         run: terraform apply -auto-approve -var "sql_server=${{ secrets.SQL_SRV_NAME }}"
 
-      - name: Commit Changes
-        if: always()
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add backend.tf terraform.tfstate
-          git commit -m "Update Terraform state"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/aaidapa96/vmsql.git HEAD:main
-      
+     

@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Database connection settings
-server = aaidapasql897121  # You may want to replace this with the server's IP address
+server = aaidapasql897121.database.windows.net  # You may want to replace this with the server's IP address
 database = 'userdb'
 username = 'sqladmin'
 password = 'demo!pass123'
